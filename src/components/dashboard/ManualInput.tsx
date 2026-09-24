@@ -59,7 +59,6 @@ export function ManualInput({ onSubmit, onCancel }: Props) {
     const niC = num(form.netIncomeCurrent);
     const niP = num(form.netIncomePrior);
 
-    // Synthetic prices for technical chart
     const prices = [];
     const base = price || 100;
     const now = new Date();
@@ -198,7 +197,7 @@ export function ManualInput({ onSubmit, onCancel }: Props) {
             <div><label className={labelClass}>DPS</label><input className={inputClass} value={form.dividendPerShare} onChange={e => set('dividendPerShare', e.target.value)} placeholder="3.2" /></div>
           </div>
 
-          <h3 className="text-sm font-medium text-cyan-400 pt-2">Growth (optional – helps earnings growth score)</h3>
+          <h3 className="text-sm font-medium text-cyan-400 pt-2">Growth (optional)</h3>
           <div className="grid grid-cols-2 gap-3">
             <div><label className={labelClass}>EPS (Current)</label><input className={inputClass} value={form.epsCurrent} onChange={e => set('epsCurrent', e.target.value)} /></div>
             <div><label className={labelClass}>EPS (Prior Year)</label><input className={inputClass} value={form.epsPrior} onChange={e => set('epsPrior', e.target.value)} /></div>
