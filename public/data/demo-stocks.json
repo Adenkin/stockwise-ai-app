@@ -12,144 +12,226 @@
       "isDemo": true
     },
     "financials": {
-      "revenue": [
-        { "value": 520000000000, "status": "Demo", "asOf": "2023" },
-        { "value": 610000000000, "status": "Demo", "asOf": "2024" }
-      ],
-      "netIncome": [
-        { "value": 180000000000, "status": "Demo", "asOf": "2023" },
-        { "value": 220000000000, "status": "Demo", "asOf": "2024" }
-      ],
-      "eps": [
-        { "value": 6.5, "status": "Demo", "asOf": "2023" },
-        { "value": 7.8, "status": "Demo", "asOf": "2024" }
-      ],
-      "pe": { "value": 5.2, "status": "Demo" },
-      "pb": { "value": 0.9, "status": "Demo" },
-      "roe": { "value": 0.22, "status": "Demo" },
-      "roa": { "value": 0.035, "status": "Demo" },
-      "debtEquity": { "value": 0.4, "status": "Demo" },
-      "currentRatio": { "value": 1.1, "status": "Demo" },
-      "dividendYield": { "value": 0.08, "status": "Demo" },
-      "dividendPerShare": { "value": 3.2, "status": "Demo" },
-      "payoutRatio": { "value": 0.41, "status": "Demo" },
-      "netMargin": { "value": 0.36, "status": "Demo" },
-      "sharePrice": { "value": 40.5, "status": "Demo" },
-      "marketCap": { "value": 1200000000000, "status": "Demo" }
+      "revenue": [{ "value": 520000000000, "status": "Demo", "asOf": "2023" }, { "value": 610000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 180000000000, "status": "Demo", "asOf": "2023" }, { "value": 220000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 6.5, "status": "Demo", "asOf": "2023" }, { "value": 7.8, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 5.2, "status": "Demo" }, "pb": { "value": 0.9, "status": "Demo" }, "roe": { "value": 0.22, "status": "Demo" },
+      "roa": { "value": 0.035, "status": "Demo" }, "debtEquity": { "value": 0.4, "status": "Demo" }, "currentRatio": { "value": 1.1, "status": "Demo" },
+      "dividendYield": { "value": 0.08, "status": "Demo" }, "dividendPerShare": { "value": 3.2, "status": "Demo" }, "payoutRatio": { "value": 0.41, "status": "Demo" },
+      "netMargin": { "value": 0.36, "status": "Demo" }, "sharePrice": { "value": 40.5, "status": "Demo" }, "marketCap": { "value": 1200000000000, "status": "Demo" }
     },
     "prices": []
   },
   "ZENITHBANK": {
     "profile": {
-      "name": "Zenith Bank Plc",
-      "ticker": "ZENITHBANK",
-      "exchange": "NGX",
-      "country": "Nigeria",
-      "sector": "Financials",
-      "industry": "Banks",
-      "currency": "NGN",
-      "description": "Major Nigerian commercial bank. DEMO DATA — NOT FOR INVESTMENT DECISIONS.",
-      "isDemo": true
+      "name": "Zenith Bank Plc", "ticker": "ZENITHBANK", "exchange": "NGX", "country": "Nigeria", "sector": "Financials", "industry": "Banks", "currency": "NGN",
+      "description": "Major Nigerian commercial bank. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
     },
     "financials": {
-      "revenue": [
-        { "value": 680000000000, "status": "Demo", "asOf": "2023" },
-        { "value": 820000000000, "status": "Demo", "asOf": "2024" }
-      ],
-      "netIncome": [
-        { "value": 210000000000, "status": "Demo", "asOf": "2023" },
-        { "value": 280000000000, "status": "Demo", "asOf": "2024" }
-      ],
-      "eps": [
-        { "value": 6.8, "status": "Demo", "asOf": "2023" },
-        { "value": 8.9, "status": "Demo", "asOf": "2024" }
-      ],
-      "pe": { "value": 4.8, "status": "Demo" },
-      "pb": { "value": 0.85, "status": "Demo" },
-      "roe": { "value": 0.25, "status": "Demo" },
-      "roa": { "value": 0.04, "status": "Demo" },
-      "debtEquity": { "value": 0.35, "status": "Demo" },
-      "dividendYield": { "value": 0.09, "status": "Demo" },
-      "dividendPerShare": { "value": 3.5, "status": "Demo" },
-      "sharePrice": { "value": 42.0, "status": "Demo" },
-      "marketCap": { "value": 1400000000000, "status": "Demo" }
+      "revenue": [{ "value": 680000000000, "status": "Demo", "asOf": "2023" }, { "value": 820000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 210000000000, "status": "Demo", "asOf": "2023" }, { "value": 280000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 6.8, "status": "Demo", "asOf": "2023" }, { "value": 8.9, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 4.8, "status": "Demo" }, "pb": { "value": 0.85, "status": "Demo" }, "roe": { "value": 0.25, "status": "Demo" },
+      "roa": { "value": 0.04, "status": "Demo" }, "debtEquity": { "value": 0.35, "status": "Demo" },
+      "dividendYield": { "value": 0.09, "status": "Demo" }, "dividendPerShare": { "value": 3.5, "status": "Demo" },
+      "sharePrice": { "value": 42.0, "status": "Demo" }, "marketCap": { "value": 1400000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "ACCESS": {
+    "profile": {
+      "name": "Access Holdings Plc", "ticker": "ACCESS", "exchange": "NGX", "country": "Nigeria", "sector": "Financials", "industry": "Banks", "currency": "NGN",
+      "description": "One of Africa's largest banking groups. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 900000000000, "status": "Demo", "asOf": "2023" }, { "value": 1100000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 250000000000, "status": "Demo", "asOf": "2023" }, { "value": 320000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 5.5, "status": "Demo", "asOf": "2023" }, { "value": 7.1, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 3.8, "status": "Demo" }, "pb": { "value": 0.7, "status": "Demo" }, "roe": { "value": 0.20, "status": "Demo" },
+      "roa": { "value": 0.028, "status": "Demo" }, "debtEquity": { "value": 0.5, "status": "Demo" },
+      "dividendYield": { "value": 0.07, "status": "Demo" }, "dividendPerShare": { "value": 1.8, "status": "Demo" },
+      "sharePrice": { "value": 22.5, "status": "Demo" }, "marketCap": { "value": 900000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "UBA": {
+    "profile": {
+      "name": "United Bank for Africa Plc", "ticker": "UBA", "exchange": "NGX", "country": "Nigeria", "sector": "Financials", "industry": "Banks", "currency": "NGN",
+      "description": "Pan-African bank with operations across Africa. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 750000000000, "status": "Demo", "asOf": "2023" }, { "value": 920000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 200000000000, "status": "Demo", "asOf": "2023" }, { "value": 260000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 5.2, "status": "Demo", "asOf": "2023" }, { "value": 6.8, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 3.5, "status": "Demo" }, "pb": { "value": 0.65, "status": "Demo" }, "roe": { "value": 0.21, "status": "Demo" },
+      "dividendYield": { "value": 0.10, "status": "Demo" }, "dividendPerShare": { "value": 2.5, "status": "Demo" },
+      "sharePrice": { "value": 28.0, "status": "Demo" }, "marketCap": { "value": 950000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "DANGCEM": {
+    "profile": {
+      "name": "Dangote Cement Plc", "ticker": "DANGCEM", "exchange": "NGX", "country": "Nigeria", "sector": "Materials", "industry": "Building Materials", "currency": "NGN",
+      "description": "Africa's leading cement producer. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 1800000000000, "status": "Demo", "asOf": "2023" }, { "value": 2100000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 450000000000, "status": "Demo", "asOf": "2023" }, { "value": 520000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 25.0, "status": "Demo", "asOf": "2023" }, { "value": 29.0, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 12.0, "status": "Demo" }, "pb": { "value": 3.2, "status": "Demo" }, "roe": { "value": 0.28, "status": "Demo" },
+      "netMargin": { "value": 0.25, "status": "Demo" }, "debtEquity": { "value": 0.6, "status": "Demo" },
+      "dividendYield": { "value": 0.06, "status": "Demo" }, "dividendPerShare": { "value": 20.0, "status": "Demo" },
+      "sharePrice": { "value": 350.0, "status": "Demo" }, "marketCap": { "value": 6000000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "MTNN": {
+    "profile": {
+      "name": "MTN Nigeria Communications Plc", "ticker": "MTNN", "exchange": "NGX", "country": "Nigeria", "sector": "Communication Services", "industry": "Telecom", "currency": "NGN",
+      "description": "Nigeria's largest mobile network operator. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 2200000000000, "status": "Demo", "asOf": "2023" }, { "value": 2800000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 300000000000, "status": "Demo", "asOf": "2023" }, { "value": 180000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 12.0, "status": "Demo", "asOf": "2023" }, { "value": 7.5, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 18.0, "status": "Demo" }, "pb": { "value": 4.5, "status": "Demo" }, "roe": { "value": 0.15, "status": "Demo" },
+      "netMargin": { "value": 0.06, "status": "Demo" }, "debtEquity": { "value": 1.8, "status": "Demo" },
+      "dividendYield": { "value": 0.04, "status": "Demo" }, "sharePrice": { "value": 185.0, "status": "Demo" }, "marketCap": { "value": 3800000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "BUACEMENT": {
+    "profile": {
+      "name": "BUA Cement Plc", "ticker": "BUACEMENT", "exchange": "NGX", "country": "Nigeria", "sector": "Materials", "industry": "Building Materials", "currency": "NGN",
+      "description": "Major Nigerian cement manufacturer. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 450000000000, "status": "Demo", "asOf": "2023" }, { "value": 520000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 120000000000, "status": "Demo", "asOf": "2023" }, { "value": 145000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 3.5, "status": "Demo", "asOf": "2023" }, { "value": 4.2, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 22.0, "status": "Demo" }, "pb": { "value": 5.0, "status": "Demo" }, "roe": { "value": 0.24, "status": "Demo" },
+      "dividendYield": { "value": 0.03, "status": "Demo" }, "sharePrice": { "value": 95.0, "status": "Demo" }, "marketCap": { "value": 3200000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "NESTLE": {
+    "profile": {
+      "name": "Nestle Nigeria Plc", "ticker": "NESTLE", "exchange": "NGX", "country": "Nigeria", "sector": "Consumer Staples", "industry": "Food Products", "currency": "NGN",
+      "description": "Leading FMCG company in Nigeria. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 450000000000, "status": "Demo", "asOf": "2023" }, { "value": 520000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 45000000000, "status": "Demo", "asOf": "2023" }, { "value": 55000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 55.0, "status": "Demo", "asOf": "2023" }, { "value": 68.0, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 25.0, "status": "Demo" }, "pb": { "value": 15.0, "status": "Demo" }, "roe": { "value": 0.55, "status": "Demo" },
+      "netMargin": { "value": 0.10, "status": "Demo" }, "dividendYield": { "value": 0.025, "status": "Demo" },
+      "sharePrice": { "value": 1100.0, "status": "Demo" }, "marketCap": { "value": 870000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "SEPLAT": {
+    "profile": {
+      "name": "Seplat Energy Plc", "ticker": "SEPLAT", "exchange": "NGX", "country": "Nigeria", "sector": "Energy", "industry": "Oil & Gas", "currency": "NGN",
+      "description": "Independent oil and gas company. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 800000000000, "status": "Demo", "asOf": "2023" }, { "value": 950000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 150000000000, "status": "Demo", "asOf": "2023" }, { "value": 180000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 25.0, "status": "Demo", "asOf": "2023" }, { "value": 30.0, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 8.0, "status": "Demo" }, "pb": { "value": 1.2, "status": "Demo" }, "roe": { "value": 0.18, "status": "Demo" },
+      "dividendYield": { "value": 0.05, "status": "Demo" }, "sharePrice": { "value": 2800.0, "status": "Demo" }, "marketCap": { "value": 1600000000000, "status": "Demo" }
     },
     "prices": []
   },
   "AAPL": {
     "profile": {
-      "name": "Apple Inc.",
-      "ticker": "AAPL",
-      "exchange": "NASDAQ",
-      "country": "United States",
-      "sector": "Technology",
-      "industry": "Consumer Electronics",
-      "currency": "USD",
-      "description": "Designs, manufactures and markets smartphones, personal computers, tablets, wearables and accessories. DEMO DATA — NOT FOR INVESTMENT DECISIONS.",
-      "isDemo": true
+      "name": "Apple Inc.", "ticker": "AAPL", "exchange": "NASDAQ", "country": "United States", "sector": "Technology", "industry": "Consumer Electronics", "currency": "USD",
+      "description": "Designs and markets smartphones, computers and wearables. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
     },
     "financials": {
-      "revenue": [
-        { "value": 383000000000, "status": "Demo", "asOf": "2023" },
-        { "value": 391000000000, "status": "Demo", "asOf": "2024" }
-      ],
-      "netIncome": [
-        { "value": 97000000000, "status": "Demo", "asOf": "2023" },
-        { "value": 94000000000, "status": "Demo", "asOf": "2024" }
-      ],
-      "eps": [
-        { "value": 6.13, "status": "Demo", "asOf": "2023" },
-        { "value": 6.08, "status": "Demo", "asOf": "2024" }
-      ],
-      "pe": { "value": 32.5, "status": "Demo" },
-      "pb": { "value": 45.0, "status": "Demo" },
-      "roe": { "value": 1.45, "status": "Demo" },
-      "roa": { "value": 0.28, "status": "Demo" },
-      "debtEquity": { "value": 1.5, "status": "Demo" },
-      "currentRatio": { "value": 0.95, "status": "Demo" },
-      "dividendYield": { "value": 0.0045, "status": "Demo" },
-      "dividendPerShare": { "value": 0.96, "status": "Demo" },
-      "netMargin": { "value": 0.24, "status": "Demo" },
-      "sharePrice": { "value": 225.0, "status": "Demo" },
-      "marketCap": { "value": 3400000000000, "status": "Demo" }
+      "revenue": [{ "value": 383000000000, "status": "Demo", "asOf": "2023" }, { "value": 391000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 97000000000, "status": "Demo", "asOf": "2023" }, { "value": 94000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 6.13, "status": "Demo", "asOf": "2023" }, { "value": 6.08, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 32.5, "status": "Demo" }, "pb": { "value": 45.0, "status": "Demo" }, "roe": { "value": 1.45, "status": "Demo" },
+      "roa": { "value": 0.28, "status": "Demo" }, "debtEquity": { "value": 1.5, "status": "Demo" }, "currentRatio": { "value": 0.95, "status": "Demo" },
+      "dividendYield": { "value": 0.0045, "status": "Demo" }, "dividendPerShare": { "value": 0.96, "status": "Demo" },
+      "netMargin": { "value": 0.24, "status": "Demo" }, "sharePrice": { "value": 225.0, "status": "Demo" }, "marketCap": { "value": 3400000000000, "status": "Demo" }
     },
     "prices": []
   },
   "MSFT": {
     "profile": {
-      "name": "Microsoft Corporation",
-      "ticker": "MSFT",
-      "exchange": "NASDAQ",
-      "country": "United States",
-      "sector": "Technology",
-      "industry": "Software — Infrastructure",
-      "currency": "USD",
-      "description": "Develops and supports software, services, devices and solutions. DEMO DATA — NOT FOR INVESTMENT DECISIONS.",
-      "isDemo": true
+      "name": "Microsoft Corporation", "ticker": "MSFT", "exchange": "NASDAQ", "country": "United States", "sector": "Technology", "industry": "Software", "currency": "USD",
+      "description": "Software, cloud and AI company. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
     },
     "financials": {
-      "revenue": [
-        { "value": 212000000000, "status": "Demo", "asOf": "2023" },
-        { "value": 245000000000, "status": "Demo", "asOf": "2024" }
-      ],
-      "netIncome": [
-        { "value": 72000000000, "status": "Demo", "asOf": "2023" },
-        { "value": 88000000000, "status": "Demo", "asOf": "2024" }
-      ],
-      "eps": [
-        { "value": 9.7, "status": "Demo", "asOf": "2023" },
-        { "value": 11.8, "status": "Demo", "asOf": "2024" }
-      ],
-      "pe": { "value": 35.0, "status": "Demo" },
-      "pb": { "value": 12.5, "status": "Demo" },
-      "roe": { "value": 0.35, "status": "Demo" },
-      "roa": { "value": 0.18, "status": "Demo" },
-      "debtEquity": { "value": 0.4, "status": "Demo" },
-      "currentRatio": { "value": 1.3, "status": "Demo" },
-      "dividendYield": { "value": 0.007, "status": "Demo" },
-      "netMargin": { "value": 0.36, "status": "Demo" },
-      "sharePrice": { "value": 420.0, "status": "Demo" },
-      "marketCap": { "value": 3100000000000, "status": "Demo" }
+      "revenue": [{ "value": 212000000000, "status": "Demo", "asOf": "2023" }, { "value": 245000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 72000000000, "status": "Demo", "asOf": "2023" }, { "value": 88000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 9.7, "status": "Demo", "asOf": "2023" }, { "value": 11.8, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 35.0, "status": "Demo" }, "pb": { "value": 12.5, "status": "Demo" }, "roe": { "value": 0.35, "status": "Demo" },
+      "roa": { "value": 0.18, "status": "Demo" }, "debtEquity": { "value": 0.4, "status": "Demo" }, "currentRatio": { "value": 1.3, "status": "Demo" },
+      "dividendYield": { "value": 0.007, "status": "Demo" }, "netMargin": { "value": 0.36, "status": "Demo" },
+      "sharePrice": { "value": 420.0, "status": "Demo" }, "marketCap": { "value": 3100000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "TSLA": {
+    "profile": {
+      "name": "Tesla, Inc.", "ticker": "TSLA", "exchange": "NASDAQ", "country": "United States", "sector": "Consumer Discretionary", "industry": "Automobiles", "currency": "USD",
+      "description": "Electric vehicles and clean energy. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 97000000000, "status": "Demo", "asOf": "2023" }, { "value": 97000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 15000000000, "status": "Demo", "asOf": "2023" }, { "value": 7000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 4.3, "status": "Demo", "asOf": "2023" }, { "value": 2.0, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 55.0, "status": "Demo" }, "pb": { "value": 9.0, "status": "Demo" }, "roe": { "value": 0.12, "status": "Demo" },
+      "netMargin": { "value": 0.07, "status": "Demo" }, "debtEquity": { "value": 0.15, "status": "Demo" },
+      "sharePrice": { "value": 250.0, "status": "Demo" }, "marketCap": { "value": 800000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "NVDA": {
+    "profile": {
+      "name": "NVIDIA Corporation", "ticker": "NVDA", "exchange": "NASDAQ", "country": "United States", "sector": "Technology", "industry": "Semiconductors", "currency": "USD",
+      "description": "Leading AI and graphics chip designer. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 61000000000, "status": "Demo", "asOf": "2023" }, { "value": 130000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 30000000000, "status": "Demo", "asOf": "2023" }, { "value": 73000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 1.2, "status": "Demo", "asOf": "2023" }, { "value": 2.9, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 45.0, "status": "Demo" }, "pb": { "value": 30.0, "status": "Demo" }, "roe": { "value": 1.1, "status": "Demo" },
+      "netMargin": { "value": 0.55, "status": "Demo" }, "debtEquity": { "value": 0.2, "status": "Demo" },
+      "sharePrice": { "value": 130.0, "status": "Demo" }, "marketCap": { "value": 3200000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "GOOGL": {
+    "profile": {
+      "name": "Alphabet Inc.", "ticker": "GOOGL", "exchange": "NASDAQ", "country": "United States", "sector": "Communication Services", "industry": "Internet Content", "currency": "USD",
+      "description": "Parent of Google; search, advertising and cloud. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 307000000000, "status": "Demo", "asOf": "2023" }, { "value": 350000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 74000000000, "status": "Demo", "asOf": "2023" }, { "value": 100000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 5.8, "status": "Demo", "asOf": "2023" }, { "value": 7.9, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 22.0, "status": "Demo" }, "pb": { "value": 6.5, "status": "Demo" }, "roe": { "value": 0.30, "status": "Demo" },
+      "netMargin": { "value": 0.28, "status": "Demo" }, "debtEquity": { "value": 0.1, "status": "Demo" },
+      "sharePrice": { "value": 175.0, "status": "Demo" }, "marketCap": { "value": 2100000000000, "status": "Demo" }
+    },
+    "prices": []
+  },
+  "AMZN": {
+    "profile": {
+      "name": "Amazon.com, Inc.", "ticker": "AMZN", "exchange": "NASDAQ", "country": "United States", "sector": "Consumer Discretionary", "industry": "Internet Retail", "currency": "USD",
+      "description": "E-commerce and cloud computing leader. DEMO DATA — NOT FOR INVESTMENT DECISIONS.", "isDemo": true
+    },
+    "financials": {
+      "revenue": [{ "value": 575000000000, "status": "Demo", "asOf": "2023" }, { "value": 638000000000, "status": "Demo", "asOf": "2024" }],
+      "netIncome": [{ "value": 30000000000, "status": "Demo", "asOf": "2023" }, { "value": 59000000000, "status": "Demo", "asOf": "2024" }],
+      "eps": [{ "value": 2.9, "status": "Demo", "asOf": "2023" }, { "value": 5.5, "status": "Demo", "asOf": "2024" }],
+      "pe": { "value": 35.0, "status": "Demo" }, "pb": { "value": 8.0, "status": "Demo" }, "roe": { "value": 0.22, "status": "Demo" },
+      "netMargin": { "value": 0.09, "status": "Demo" }, "debtEquity": { "value": 0.5, "status": "Demo" },
+      "sharePrice": { "value": 185.0, "status": "Demo" }, "marketCap": { "value": 1950000000000, "status": "Demo" }
     },
     "prices": []
   }
