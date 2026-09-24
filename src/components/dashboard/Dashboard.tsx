@@ -67,7 +67,7 @@ export function Dashboard({ company, analysis, onBack }: Props) {
               {formatCurrency(profile.sharePrice?.value ?? null, profile.currency)}
             </div>
             <div className="text-sm text-slate-400 mt-1">
-              Mkt Cap: {formatCurrency(financials.marketCap?.value ?? null, profile.currency, 1)}
+              Mkt Cap: {formatCurrency(profile.marketCap?.value ?? financials.marketCap?.value ?? null, profile.currency, 1)}
             </div>
           </div>
         </div>
