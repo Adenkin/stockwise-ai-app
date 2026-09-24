@@ -8,7 +8,9 @@ export interface DataProvider {
 
 export async function loadDemoData(): Promise<Record<string, any>> {
   try {
-    const res = await fetch(`${import.meta.env.BASE_URL}data/demo-stocks.json`);
+    // Works both locally and on GitHub Pages
+    const base = (import.meta as any).env?.BASE_URL || '/';
+    const res = await fetch(`${base}data/demo-stocks.json`);
     if (!res.ok) throw new Error('Demo load failed');
     return await res.json();
   } catch {
