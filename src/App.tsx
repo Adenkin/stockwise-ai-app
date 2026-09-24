@@ -1,13 +1,18 @@
 import { useState } from 'react';
-import { Search, TrendingUp, Shield, BookOpen, Briefcase } from 'lucide-react';
+import { Search, TrendingUp, Shield, BookOpen, Briefcase, Calculator } from 'lucide-react';
 import { DemoProvider } from './providers/DemoProvider';
 import { analyseCompany } from './analysis/orchestrator';
 import { CompanyData } from './types/company';
 import { FullAnalysis } from './types/analysis';
 import { Dashboard } from './components/dashboard/Dashboard';
-import { formatPct, formatNumber } from './utils/math';
+import { ManualInput } from './components/manual/ManualInput';
 
 const provider = new DemoProvider();
+
+const DEMO_TICKERS = [
+  'GTCO', 'ZENITHBANK', 'ACCESS', 'UBA', 'DANGCEM', 'MTNN', 'BUACEMENT', 'NESTLE', 'SEPLAT',
+  'AAPL', 'MSFT', 'TSLA', 'NVDA', 'GOOGL', 'AMZN'
+];
 
 export default function App() {
   const [query, setQuery] = useState('');
@@ -16,6 +21,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [company, setCompany] = useState<CompanyData | null>(null);
   const [analysis, setAnalysis] = useState<FullAnalysis | null>(null);
+  const [showManual, setShowManual] = useState(false);
 
   const handleAnalyse = async () => {
     if (!query.trim()) return;
@@ -26,7 +32,7 @@ export default function App() {
     try {
       const data = await provider.fetchCompany(query.trim(), market === 'Auto' ? undefined : market);
       if (!data) {
-        setError(`No data found for "${query}". Try GTCO, ZENITHBANK, AAPL or MSFT (demo mode).`);
+        setError(`No demo data for "${query}". Try one of the listed tickers, or use Manual Input to enter your own figures.`);
         return;
       }
       const result = analyseCompany(data);
@@ -39,9 +45,15 @@ export default function App() {
     }
   };
 
+  const handleManualSubmit = (data: CompanyData) => {
+    setShowManual(false);
+    setCompany(data);
+    setAnalysis(analyseCompany(data));
+    setError(null);
+  };
+
   return (
     <div className="min-h-screen bg-navy-900">
-      {/* Header */}
       <header className="border-b border-navy-700 bg-navy-800/80 backdrop-blur sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -61,15 +73,12 @@ export default function App() {
       </header>
 
       <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* Search Hero */}
         {!company && (
-          <section className="text-center py-12 sm:py-20">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-              Analyse Any Stock
-            </h2>
+          <section className="text-center py-10 sm:py-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Analyse Any Stock</h2>
             <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-              Professional-grade fundamental, valuation, technical and risk analysis.
-              Currently powered by transparent demo data for NGX & US examples.
+              Professional fundamental, valuation, technical and risk analysis.
+              Demo data for popular NGX & US stocks, or enter your own figures.
             </p>
 
             <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
@@ -80,7 +89,7 @@ export default function App() {
                   value={query}
                   onChange={e => setQuery(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && handleAnalyse()}
-                  placeholder="Enter ticker e.g. GTCO, AAPL, MSFT"
+                  placeholder="Enter ticker e.g. GTCO, DANGCEM, AAPL"
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-navy-800 border border-navy-600 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400"
                 />
               </div>
@@ -104,16 +113,41 @@ export default function App() {
               </button>
             </div>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-2 text-sm">
-              {['GTCO', 'ZENITHBANK', 'AAPL', 'MSFT'].map(t => (
-                <button
-                  key={t}
-                  onClick={() => { setQuery(t); }}
-                  className="px-3 py-1 rounded-full bg-navy-800 border border-navy-600 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300 transition"
-                >
-                  {t}
-                </button>
-              ))}
+            <div className="mt-5">
+              <button
+                onClick={() => setShowManual(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 text-sm transition"
+              >
+                <Calculator className="w-4 h-4" />
+                Manual Input — enter your own figures
+              </button>
+            </div>
+
+            <div className="mt-6">
+              <p className="text-xs text-slate-500 mb-2">NGX demo</p>
+              <div className="flex flex-wrap justify-center gap-2 text-sm mb-4">
+                {['GTCO', 'ZENITHBANK', 'ACCESS', 'UBA', 'DANGCEM', 'MTNN', 'BUACEMENT', 'NESTLE', 'SEPLAT'].map(t => (
+                  <button
+                    key={t}
+                    onClick={() => { setQuery(t); }}
+                    className="px-3 py-1 rounded-full bg-navy-800 border border-navy-600 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300 transition"
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-slate-500 mb-2">US demo</p>
+              <div className="flex flex-wrap justify-center gap-2 text-sm">
+                {['AAPL', 'MSFT', 'TSLA', 'NVDA', 'GOOGL', 'AMZN'].map(t => (
+                  <button
+                    key={t}
+                    onClick={() => { setQuery(t); }}
+                    className="px-3 py-1 rounded-full bg-navy-800 border border-navy-600 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300 transition"
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {error && (
@@ -122,7 +156,7 @@ export default function App() {
               </div>
             )}
 
-            <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left max-w-3xl mx-auto">
+            <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left max-w-3xl mx-auto">
               <div className="p-5 rounded-xl bg-navy-800/60 border border-navy-700">
                 <TrendingUp className="w-6 h-6 text-cyan-400 mb-2" />
                 <h3 className="font-semibold text-white mb-1">Multi-Engine Analysis</h3>
@@ -136,13 +170,12 @@ export default function App() {
               <div className="p-5 rounded-xl bg-navy-800/60 border border-navy-700">
                 <Briefcase className="w-6 h-6 text-amber-400 mb-2" />
                 <h3 className="font-semibold text-white mb-1">NGX + Global</h3>
-                <p className="text-sm text-slate-400">Designed for Nigerian listed stocks and major international markets.</p>
+                <p className="text-sm text-slate-400">Demo data for popular Nigerian and US stocks, plus full manual entry.</p>
               </div>
             </div>
           </section>
         )}
 
-        {/* Results */}
         {company && analysis && (
           <Dashboard
             company={company}
@@ -157,6 +190,10 @@ export default function App() {
         <p className="mt-1">All classifications are model outputs based on available data and transparent rules. You make the final decision.</p>
         <p className="mt-2">© 2026 StockWise AI — Open Source • GitHub Pages</p>
       </footer>
+
+      {showManual && (
+        <ManualInput onSubmit={handleManualSubmit} onCancel={() => setShowManual(false)} />
+      )}
     </div>
   );
 }
