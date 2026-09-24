@@ -58,6 +58,7 @@ export interface Financials {
   dividendYield?: DataPoint;
   dividendPerShare?: DataPoint;
   payoutRatio?: DataPoint;
+  marketCap?: DataPoint;
 }
 
 export interface PriceBar {
