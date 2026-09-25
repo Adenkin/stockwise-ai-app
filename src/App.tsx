@@ -1,18 +1,15 @@
 import { useState } from 'react';
-import { Search, TrendingUp, Shield, BookOpen, Briefcase, Calculator } from 'lucide-react';
-import { DemoProvider } from './providers/DemoProvider';
+import { Search, TrendingUp, Shield, BookOpen, Briefcase, Calculator, Settings } from 'lucide-react';
+import { CompositeProvider } from './providers/CompositeProvider';
 import { analyseCompany } from './analysis/orchestrator';
 import { CompanyData } from './types/company';
 import { FullAnalysis } from './types/analysis';
 import { Dashboard } from './components/dashboard/Dashboard';
 import { ManualInput } from './components/dashboard/ManualInput';
+import { SettingsPanel } from './components/settings/SettingsPanel';
+import { hasLiveKey } from './utils/storage';
 
-const provider = new DemoProvider();
-
-const DEMO_TICKERS = [
-  'GTCO', 'ZENITHBANK', 'ACCESS', 'UBA', 'DANGCEM', 'MTNN', 'BUACEMENT', 'NESTLE', 'SEPLAT',
-  'AAPL', 'MSFT', 'TSLA', 'NVDA', 'GOOGL', 'AMZN'
-];
+const provider = new CompositeProvider();
 
 export default function App() {
   const [query, setQuery] = useState('');
@@ -22,6 +19,8 @@ export default function App() {
   const [company, setCompany] = useState<CompanyData | null>(null);
   const [analysis, setAnalysis] = useState<FullAnalysis | null>(null);
   const [showManual, setShowManual] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [liveEnabled, setLiveEnabled] = useState(() => hasLiveKey());
 
   const handleAnalyse = async () => {
     if (!query.trim()) return;
@@ -32,7 +31,9 @@ export default function App() {
     try {
       const data = await provider.fetchCompany(query.trim(), market === 'Auto' ? undefined : market);
       if (!data) {
-        setError(`No demo data for "${query}". Try one of the listed tickers, or use Manual Input to enter your own figures.`);
+        setError(
+          `No data for "${query}". Try a demo ticker, connect a free Finnhub key (Settings) for US stocks, or use Manual Input.`
+        );
         return;
       }
       const result = analyseCompany(data);
@@ -65,9 +66,20 @@ export default function App() {
               <p className="text-xs text-slate-400">Free Research • Transparent • Zero Cost</p>
             </div>
           </div>
-          <div className="hidden sm:flex items-center gap-4 text-xs text-slate-400">
-            <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5" /> Local only</span>
-            <span className="flex items-center gap-1"><BookOpen className="w-3.5 h-3.5" /> Open Source</span>
+          <div className="flex items-center gap-3 text-xs text-slate-400">
+            {liveEnabled && (
+              <span className="hidden sm:inline px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                Live key active
+              </span>
+            )}
+            <button
+              onClick={() => setShowSettings(true)}
+              className="flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-navy-700 text-slate-300"
+              title="Live data settings"
+            >
+              <Settings className="w-4 h-4" />
+              <span className="hidden sm:inline">Settings</span>
+            </button>
           </div>
         </div>
       </header>
@@ -77,8 +89,7 @@ export default function App() {
           <section className="text-center py-10 sm:py-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">Analyse Any Stock</h2>
             <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-              Professional fundamental, valuation, technical and risk analysis.
-              Demo data for popular NGX & US stocks, or enter your own figures.
+              Demo data for NGX & popular US names. Optional near-realtime (delayed) US quotes via your free Finnhub key.
             </p>
 
             <div className="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
@@ -89,37 +100,40 @@ export default function App() {
                   value={query}
                   onChange={e => setQuery(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && handleAnalyse()}
-                  placeholder="Enter ticker e.g. GTCO, DANGCEM, AAPL"
-                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-navy-800 border border-navy-600 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400"
+                  placeholder="Ticker e.g. AAPL, MSFT, GTCO"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-navy-800 border border-navy-600 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
                 />
               </div>
               <select
                 value={market}
                 onChange={e => setMarket(e.target.value)}
-                className="px-4 py-3 rounded-xl bg-navy-800 border border-navy-600 text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
+                className="px-4 py-3 rounded-xl bg-navy-800 border border-navy-600 text-slate-200"
               >
                 <option value="Auto">Auto Detect</option>
                 <option value="NGX">NGX</option>
                 <option value="US">US</option>
-                <option value="UK">UK</option>
-                <option value="Canada">Canada</option>
               </select>
               <button
                 onClick={handleAnalyse}
                 disabled={loading || !query.trim()}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-navy-900 font-semibold hover:opacity-90 disabled:opacity-50 transition"
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 text-navy-900 font-semibold hover:opacity-90 disabled:opacity-50"
               >
                 {loading ? 'Analysing…' : 'ANALYSE STOCK'}
               </button>
             </div>
 
-            <div className="mt-5">
+            <div className="mt-5 flex flex-wrap justify-center gap-2">
               <button
                 onClick={() => setShowManual(true)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 text-sm transition"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 text-sm"
               >
-                <Calculator className="w-4 h-4" />
-                Manual Input — enter your own figures
+                <Calculator className="w-4 h-4" /> Manual Input
+              </button>
+              <button
+                onClick={() => setShowSettings(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-navy-600 text-slate-300 hover:bg-navy-800 text-sm"
+              >
+                <Settings className="w-4 h-4" /> Connect free live key
               </button>
             </div>
 
@@ -127,23 +141,17 @@ export default function App() {
               <p className="text-xs text-slate-500 mb-2">NGX demo</p>
               <div className="flex flex-wrap justify-center gap-2 text-sm mb-4">
                 {['GTCO', 'ZENITHBANK', 'ACCESS', 'UBA', 'DANGCEM', 'MTNN', 'BUACEMENT', 'NESTLE', 'SEPLAT'].map(t => (
-                  <button
-                    key={t}
-                    onClick={() => { setQuery(t); }}
-                    className="px-3 py-1 rounded-full bg-navy-800 border border-navy-600 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300 transition"
-                  >
+                  <button key={t} onClick={() => setQuery(t)}
+                    className="px-3 py-1 rounded-full bg-navy-800 border border-navy-600 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300">
                     {t}
                   </button>
                 ))}
               </div>
-              <p className="text-xs text-slate-500 mb-2">US demo</p>
+              <p className="text-xs text-slate-500 mb-2">US (demo or live with key)</p>
               <div className="flex flex-wrap justify-center gap-2 text-sm">
                 {['AAPL', 'MSFT', 'TSLA', 'NVDA', 'GOOGL', 'AMZN'].map(t => (
-                  <button
-                    key={t}
-                    onClick={() => { setQuery(t); }}
-                    className="px-3 py-1 rounded-full bg-navy-800 border border-navy-600 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300 transition"
-                  >
+                  <button key={t} onClick={() => setQuery(t)}
+                    className="px-3 py-1 rounded-full bg-navy-800 border border-navy-600 text-slate-300 hover:border-cyan-400/50 hover:text-cyan-300">
                     {t}
                   </button>
                 ))}
@@ -165,12 +173,12 @@ export default function App() {
               <div className="p-5 rounded-xl bg-navy-800/60 border border-navy-700">
                 <Shield className="w-6 h-6 text-teal-400 mb-2" />
                 <h3 className="font-semibold text-white mb-1">Zero Mandatory Cost</h3>
-                <p className="text-sm text-slate-400">Runs entirely in your browser. No paid APIs required for core analysis.</p>
+                <p className="text-sm text-slate-400">Demo + Manual free. Optional live key stays in your browser only.</p>
               </div>
               <div className="p-5 rounded-xl bg-navy-800/60 border border-navy-700">
                 <Briefcase className="w-6 h-6 text-amber-400 mb-2" />
                 <h3 className="font-semibold text-white mb-1">NGX + Global</h3>
-                <p className="text-sm text-slate-400">Demo data for popular Nigerian and US stocks, plus full manual entry.</p>
+                <p className="text-sm text-slate-400">Demo for Nigerian names; near-realtime US with free Finnhub key.</p>
               </div>
             </div>
           </section>
@@ -187,12 +195,20 @@ export default function App() {
 
       <footer className="border-t border-navy-700 mt-16 py-8 text-center text-xs text-slate-500">
         <p>StockWise AI is a research tool. It does not provide personalised investment advice.</p>
-        <p className="mt-1">All classifications are model outputs based on available data and transparent rules. You make the final decision.</p>
+        <p className="mt-1">Live free-tier data is typically delayed. Demo and model outputs are not guarantees.</p>
         <p className="mt-2">© 2026 StockWise AI — Open Source • GitHub Pages</p>
       </footer>
 
       {showManual && (
         <ManualInput onSubmit={handleManualSubmit} onCancel={() => setShowManual(false)} />
+      )}
+      {showSettings && (
+        <SettingsPanel
+          onClose={() => {
+            setShowSettings(false);
+            setLiveEnabled(hasLiveKey());
+          }}
+        />
       )}
     </div>
   );
