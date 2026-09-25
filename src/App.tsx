@@ -5,7 +5,7 @@ import { analyseCompany } from './analysis/orchestrator';
 import { CompanyData } from './types/company';
 import { FullAnalysis } from './types/analysis';
 import { Dashboard } from './components/dashboard/Dashboard';
-import { ManualInput } from './components/manual/ManualInput';
+import { ManualInput } from './components/dashboard/ManualInput';
 
 const provider = new DemoProvider();
 
