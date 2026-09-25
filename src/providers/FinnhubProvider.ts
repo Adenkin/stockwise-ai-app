@@ -7,13 +7,11 @@ function dp(v: number | null | undefined, status: DataPoint['status'] = 'Actual'
   return { value: v, status, source: 'Finnhub (delayed free tier)' };
 }
 
-/** US / major international symbols only. NGX falls through to demo. */
 export class FinnhubProvider implements DataProvider {
   name = 'FinnhubProvider';
 
   canHandle(ticker: string, market?: string): boolean {
     const t = ticker.toUpperCase();
-    // Skip obvious NGX-style names without exchange suffix when market is NGX
     if (market === 'NGX') return false;
     const ngxList = ['GTCO', 'ZENITHBANK', 'ACCESS', 'UBA', 'DANGCEM', 'MTNN', 'BUACEMENT', 'NESTLE', 'SEPLAT'];
     if (ngxList.includes(t)) return false;
@@ -35,7 +33,7 @@ export class FinnhubProvider implements DataProvider {
 
       if (!quoteRes.ok) return null;
       const quote = await quoteRes.json();
-      if (quote.c == null || quote.c === 0) return null; // no data
+      if (quote.c == null || quote.c === 0) return null;
 
       const profile = profileRes.ok ? await profileRes.json() : {};
       const metricBody = metricRes.ok ? await metricRes.json() : {};
@@ -61,37 +59,36 @@ export class FinnhubProvider implements DataProvider {
       const roe = metrics.roeTTM ?? metrics.roeRfy ?? null;
       const roa = metrics.roaTTM ?? metrics.roaRfy ?? null;
       const netMargin = metrics.netProfitMarginTTM ?? metrics.netMarginTTM ?? null;
-      const divYield = metrics.dividendYieldIndicatedAnnual != null
-        ? metrics.dividendYieldIndicatedAnnual / 100
-        : metrics.dividendYieldIndicatedAnnual;
+      const divYield =
+        metrics.dividendYieldIndicatedAnnual != null
+          ? metrics.dividendYieldIndicatedAnnual / 100
+          : null;
 
-      // Finnhub often returns ROE/margins already as %
       const roeVal = roe != null ? (Math.abs(roe) > 1 ? roe / 100 : roe) : null;
       const roaVal = roa != null ? (Math.abs(roa) > 1 ? roa / 100 : roa) : null;
       const marginVal = netMargin != null ? (Math.abs(netMargin) > 1 ? netMargin / 100 : netMargin) : null;
 
-      const data: CompanyData = {
+      return {
         profile: {
           name: profile.name || symbol,
           ticker: symbol,
           exchange: profile.exchange || 'US',
           country: profile.country || 'United States',
-          sector: profile.finnhubIndustry || profile.gicsSector || 'Unknown',
+          sector: profile.finnhubIndustry || 'Unknown',
           industry: profile.finnhubIndustry || 'Unknown',
           currency: profile.currency || 'USD',
           sharePrice: dp(quote.c, 'Actual'),
           marketCap: dp(profile.marketCapitalization != null ? profile.marketCapitalization * 1e6 : null, 'Actual'),
-          week52High: dp(quote.h ?? metrics['52WeekHigh'], 'Actual'),
-          week52Low: dp(quote.l ?? metrics['52WeekLow'], 'Actual'),
-          description: `${profile.name || symbol} — live data via Finnhub free tier (typically delayed ~15–20 min). Not investment advice.`,
+          description: `${profile.name || symbol} — live data via Finnhub free tier (typically delayed). Not investment advice.`,
           isDemo: false,
         },
         financials: {
           revenue: [],
           netIncome: [],
-          eps: metrics.epsAnnual != null || metrics.epsTTM != null
-            ? [{ value: metrics.epsTTM ?? metrics.epsAnnual, status: 'Actual', source: 'Finnhub' }]
-            : [],
+          eps:
+            metrics.epsAnnual != null || metrics.epsTTM != null
+              ? [{ value: metrics.epsTTM ?? metrics.epsAnnual, status: 'Actual', source: 'Finnhub' }]
+              : [],
           pe: dp(pe, 'Actual'),
           pb: dp(pb, 'Actual'),
           roe: dp(roeVal, 'Actual'),
@@ -114,8 +111,6 @@ export class FinnhubProvider implements DataProvider {
           },
         ],
       };
-
-      return data;
     } catch (e) {
       console.warn('Finnhub fetch failed', e);
       return null;
@@ -124,7 +119,7 @@ export class FinnhubProvider implements DataProvider {
 
   private candleUrl(symbol: string, token: string): string {
     const to = Math.floor(Date.now() / 1000);
-    const from = to - 365 * 24 * 3600; // ~1 year daily
+    const from = to - 365 * 24 * 3600;
     return `https://finnhub.io/api/v1/stock/candle?symbol=${encodeURIComponent(symbol)}&resolution=D&from=${from}&to=${to}&token=${token}`;
   }
 }
