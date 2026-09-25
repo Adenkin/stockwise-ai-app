@@ -1,9 +1,12 @@
 const KEYS = {
   finnhub: 'stockwise_finnhub_key',
   alphaVantage: 'stockwise_av_key',
+  ngnMarket: 'stockwise_ngn_key',
 } as const;
 
-export function getApiKey(provider: keyof typeof KEYS): string | null {
+export type ApiKeyProvider = keyof typeof KEYS;
+
+export function getApiKey(provider: ApiKeyProvider): string | null {
   try {
     return localStorage.getItem(KEYS[provider]);
   } catch {
@@ -11,7 +14,7 @@ export function getApiKey(provider: keyof typeof KEYS): string | null {
   }
 }
 
-export function setApiKey(provider: keyof typeof KEYS, key: string): void {
+export function setApiKey(provider: ApiKeyProvider, key: string): void {
   try {
     if (!key.trim()) localStorage.removeItem(KEYS[provider]);
     else localStorage.setItem(KEYS[provider], key.trim());
@@ -20,7 +23,7 @@ export function setApiKey(provider: keyof typeof KEYS, key: string): void {
   }
 }
 
-export function clearApiKey(provider: keyof typeof KEYS): void {
+export function clearApiKey(provider: ApiKeyProvider): void {
   try {
     localStorage.removeItem(KEYS[provider]);
   } catch {
@@ -29,5 +32,9 @@ export function clearApiKey(provider: keyof typeof KEYS): void {
 }
 
 export function hasLiveKey(): boolean {
-  return !!(getApiKey('finnhub') || getApiKey('alphaVantage'));
+  return !!(getApiKey('finnhub') || getApiKey('alphaVantage') || getApiKey('ngnMarket'));
+}
+
+export function hasNgnKey(): boolean {
+  return !!getApiKey('ngnMarket');
 }
